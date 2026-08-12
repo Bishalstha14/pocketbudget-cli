@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pocketbudget-cli"
+version = "0.1.0"
+description = "A command-line budget manager"
+requires-python = ">=3.11"
+
+[project.scripts]
+pocketbudget = "pocketbudget.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pocketbudget*"]
