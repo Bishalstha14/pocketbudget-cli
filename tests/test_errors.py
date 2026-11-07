@@ -44,6 +44,25 @@ def test_negative_expense_raises_invalid_transaction_error() -> None:
     assert account.balance == 100
 
 
+def test_zero_income_raises_invalid_transaction_error() -> None:
+    account = Account()
+
+    with pytest.raises(InvalidTransactionError, match="Income must be positive"):
+        account.add_income(0)
+
+    assert account.balance == 0
+
+
+def test_zero_expense_raises_invalid_transaction_error() -> None:
+    account = Account()
+    account.add_income(100)
+
+    with pytest.raises(InvalidTransactionError, match="Expense must be positive"):
+        account.add_expense(0, "entertainment")
+
+    assert account.balance == 100
+
+
 def test_negative_budget_limit_raises_invalid_transaction_error() -> None:
     account = Account()
 
