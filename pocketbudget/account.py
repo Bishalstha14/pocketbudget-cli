@@ -60,7 +60,7 @@ class Account:
         self._spending.setdefault(category, 0)
 
     def _validate_positive(self, amount: int, label: str) -> None:
-        if amount < 0:
+        if amount <= 0:
             raise InvalidTransactionError(f"{label} must be positive.")
 
     def _validate_overdraft(self, amount: int) -> None:
